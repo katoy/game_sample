@@ -2,6 +2,13 @@
 
 A new Flutter project.
 
+WIP
+
+## scrennshot
+
+- anmimation gif
+![screnn](./screenshots/namer.gif)
+
 ## See
 
 - https://github.com/NearHuscarl/flutter_login
