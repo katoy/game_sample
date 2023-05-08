@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '/screens/dashboard_screen.dart';
+// import '/screens/dashboard_screen.dart';
+import '/screens/namer_screen.dart';
 import '/screens/login_screen.dart';
 import '/utils/transition_route_observer.dart';
 
@@ -61,7 +62,8 @@ class MyApp extends StatelessWidget {
       initialRoute: LoginScreen.routeName,
       routes: {
         LoginScreen.routeName: (context) => const LoginScreen(),
-        DashboardScreen.routeName: (context) => const DashboardScreen(),
+        // DashboardScreen.routeName: (context) => const DashboardScreen(),
+        NamerScreen.routeName: (context) => const NamerScreen(),
       },
     );
   }

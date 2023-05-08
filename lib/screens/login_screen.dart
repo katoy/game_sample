@@ -5,7 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/constants/constants.dart';
 import '/utils/custom_route.dart';
-import '/screens/dashboard_screen.dart';
+// import '/screens/dashboard_screen.dart';
+import '/screens/namer_screen.dart';
 import '/users.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -153,7 +154,7 @@ class LoginScreen extends StatelessWidget {
         accentColor: Colors.yellow,
         errorColor: Colors.deepOrange,
         titleStyle: const TextStyle(
-          color: Colors.greenAccent,
+          color: Colors.black,
           fontFamily: 'Quicksand',
           letterSpacing: 4,
         ),
@@ -298,7 +299,8 @@ class LoginScreen extends StatelessWidget {
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(
           FadePageRoute(
-            builder: (context) => const DashboardScreen(),
+            // builder: (context) => const DashboardScreen(),
+            builder: (context) => const NamerScreen(),
           ),
         );
       },
