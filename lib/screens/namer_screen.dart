@@ -3,7 +3,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/theme.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_login/widgets.dart';
 
@@ -62,6 +61,8 @@ class NamerState extends ChangeNotifier {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -70,16 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
 
   AppBar _buildAppBar(ThemeData theme) {
-    final menuBtn = IconButton(
-      color: theme.colorScheme.secondary,
-      icon: const Icon(FontAwesomeIcons.bars),
-      onPressed: () {},
-    );
-    final signOutBtn = IconButton(
-      icon: const Icon(FontAwesomeIcons.rightFromBracket),
-      color: theme.colorScheme.secondary,
-      onPressed: () => print("login"), //_goToLogin(context),
-    );
     final title = Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -207,6 +198,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class GeneratorPage extends StatelessWidget {
+  const GeneratorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<NamerState>();
@@ -300,6 +293,8 @@ class BigCard extends StatelessWidget {
 }
 
 class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
