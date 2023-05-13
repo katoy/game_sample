@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_login/widgets.dart';
 
 import '/constants/constants.dart';
+import '/screens/indicator_screen.dart';
 
 class NamerScreen extends StatelessWidget {
   static const routeName = '/namer';
@@ -117,6 +118,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = IndicatorScreen();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -152,6 +156,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         icon: Icon(Icons.favorite),
                         label: 'Favorites',
                       ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.drag_indicator),
+                        label: 'indicator',
+                      ),
                     ],
                     currentIndex: selectedIndex,
                     onTap: (value) {
@@ -177,6 +185,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       NavigationRailDestination(
                         icon: Icon(Icons.favorite),
                         label: Text('Favorites'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.drag_indicator),
+                        label: Text('indicator'),
                       ),
                     ],
                     selectedIndex: selectedIndex,

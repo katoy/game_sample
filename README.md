@@ -16,3 +16,6 @@ WIP
 
 - https://dartpad.dev/?id=e7076b40fb17a0fa899f9f7a154a02e8
   namer (高度な最終的なコード)
+
+- https://dev.classmethod.jp/articles/flutter-smooth-page-indicator/
+  ページインジケーター機能を実装する
