@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     type: BottomNavigationBarType.fixed,
                     items: [
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.games),
+                        icon: Icon(Icons.grid_3x3),
                         label: 'game',
                       ),
                       BottomNavigationBarItem(

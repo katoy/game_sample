@@ -104,7 +104,7 @@ class GameScreenState extends State<GameScreen> {
     }
 
     String message = winner == null
-        ? 'Draw!'
+        ? '引分け!'
         : winner == 'X'
             ? 'あなたの勝ち!'
             : 'ＡＩの勝ち!';

@@ -25,14 +25,7 @@ class _IndicatorScreenState extends State<IndicatorScreen> {
                 color: Colors.grey.shade300,
               ),
               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: SizedBox(
-                height: 280,
-                child: Center(
-                    child: Text(
-                  "Page $index",
-                  style: const TextStyle(color: Colors.indigo),
-                )),
-              ),
+              child: Image.network(image_urls[index], width: 200, height: 200),
             ));
     return Scaffold(
       body: SafeArea(
@@ -106,4 +99,13 @@ const colors = [
   Colors.amberAccent,
   Colors.blue,
   Colors.amber,
+];
+
+const image_urls = [
+  'https://upload.wikimedia.org/wikipedia/commons/9/98/Wind_God_and_Thunder_God_by_Sakai_H%C5%8Ditsu.png',
+  'https://cdn.pixabay.com/photo/2016/02/02/18/33/sphinx-1175827_1280.jpg',
+  'https://cdn.pixabay.com/photo/2015/04/28/18/35/race-744105_1280.jpg',
+  'https://cdn.pixabay.com/photo/2020/01/28/20/33/astronaut-4800946_1280.jpg',
+  'https://cdn.pixabay.com/photo/2021/07/20/18/19/bald-eagle-6481346_1280.jpg',
+  'https://cdn.pixabay.com/photo/2019/03/08/16/16/night-4042650_1280.jpg'
 ];
