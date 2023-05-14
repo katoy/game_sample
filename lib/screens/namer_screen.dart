@@ -9,6 +9,7 @@ import 'package:flutter_login/widgets.dart';
 import '/constants/constants.dart';
 import '/screens/indicator_screen.dart';
 import '/screens/game_screen.dart';
+import '/screens/map_screen.dart';
 
 class NamerScreen extends StatelessWidget {
   static const routeName = '/namer';
@@ -111,33 +112,37 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     final theme = Theme.of(context);
-
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = GameScreen();
-        break;
-      case 1:
-        page = GeneratorPage();
-        break;
-      case 2:
-        page = FavoritesPage();
-        break;
-      case 3:
-        page = IndicatorScreen();
-        break;
-      default:
-        throw UnimplementedError('no widget for $selectedIndex');
-    }
+    var appPages = [
+      {
+        'widget': GameScreen(),
+        'label': 'game',
+        'icon': Icon(Icons.grid_3x3, size: 24)
+      },
+      {
+        'widget': GeneratorPage(),
+        'label': 'home',
+        'icon': Icon(Icons.home, size: 24)
+      },
+      {
+        'widget': FavoritesPage(),
+        'label': 'favorite',
+        'icon': Icon(Icons.favorite, size: 24)
+      },
+      {
+        'widget': IndicatorScreen(),
+        'label': 'indicator',
+        'icon': Icon(Icons.drag_indicator, size: 24)
+      },
+      {'widget': MapScreen(), 'label': 'map', 'icon': Icon(Icons.map, size: 24)}
+    ];
 
     // The container for the current page, with its background color
     // and subtle switching animation.
     var mainArea = ColoredBox(
       color: colorScheme.surfaceVariant,
       child: AnimatedSwitcher(
-        duration: Duration(milliseconds: 200),
-        child: page,
-      ),
+          duration: Duration(milliseconds: 200),
+          child: appPages[selectedIndex]['widget'] as Widget),
     );
 
     return Scaffold(
@@ -155,20 +160,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     type: BottomNavigationBarType.fixed,
                     items: [
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.grid_3x3),
-                        label: 'game',
+                        icon: appPages[0]['icon'] as Icon,
+                        label: appPages[0]['label'] as String,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: 'Home',
+                        icon: appPages[1]['icon'] as Icon,
+                        label: appPages[1]['label'] as String,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.favorite),
-                        label: 'Favorites',
+                        icon: appPages[2]['icon'] as Icon,
+                        label: appPages[2]['label'] as String,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.drag_indicator),
-                        label: 'indicator',
+                        icon: appPages[3]['icon'] as Icon,
+                        label: appPages[3]['label'] as String,
+                      ),
+                      BottomNavigationBarItem(
+                        icon: appPages[4]['icon'] as Icon,
+                        label: appPages[4]['label'] as String,
                       ),
                     ],
                     currentIndex: selectedIndex,
@@ -190,20 +199,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                        icon: Icon(Icons.grid_3x3),
-                        label: Text('game'),
+                        icon: appPages[0]['icon'] as Icon,
+                        label: Text(appPages[0]['label'] as String),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home'),
+                        icon: appPages[1]['icon'] as Icon,
+                        label: Text(appPages[1]['label'] as String),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
-                        label: Text('Favorites'),
+                        icon: appPages[2]['icon'] as Icon,
+                        label: Text(appPages[2]['label'] as String),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.drag_indicator),
-                        label: Text('indicator'),
+                        icon: appPages[3]['icon'] as Icon,
+                        label: Text(appPages[3]['label'] as String),
+                      ),
+                      NavigationRailDestination(
+                        icon: appPages[4]['icon'] as Icon,
+                        label: Text(appPages[4]['label'] as String),
                       ),
                     ],
                     selectedIndex: selectedIndex,

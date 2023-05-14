@@ -4,6 +4,8 @@ A new Flutter project.
 
 WIP
 
+web/index.html で goolgmap のための API KEY を設定する必要があります。(for web)
+
 ## scrennshot
 
 - anmimation gif
@@ -19,3 +21,6 @@ WIP
 
 - https://dev.classmethod.jp/articles/flutter-smooth-page-indicator/
   ページインジケーター機能を実装する
+
+- https://qiita.com/yoshikoba/items/e4c8eae14735e7304902
+  iOS/Android/WebでGoogleMapを表示する
