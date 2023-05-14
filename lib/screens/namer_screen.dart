@@ -8,6 +8,7 @@ import 'package:flutter_login/widgets.dart';
 
 import '/constants/constants.dart';
 import '/screens/indicator_screen.dart';
+import '/screens/game_screen.dart';
 
 class NamerScreen extends StatelessWidget {
   static const routeName = '/namer';
@@ -87,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          const SizedBox(width: 8),
           HeroText(
             Constants.appName,
             tag: Constants.titleTag,
@@ -113,12 +115,15 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = GameScreen();
         break;
       case 1:
-        page = FavoritesPage();
+        page = GeneratorPage();
         break;
       case 2:
+        page = FavoritesPage();
+        break;
+      case 3:
         page = IndicatorScreen();
         break;
       default:
@@ -147,7 +152,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(child: mainArea),
                 SafeArea(
                   child: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
                     items: [
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.games),
+                        label: 'game',
+                      ),
                       BottomNavigationBarItem(
                         icon: Icon(Icons.home),
                         label: 'Home',
@@ -176,8 +186,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 SafeArea(
                   child: NavigationRail(
+                    minExtendedWidth: 200,
                     extended: constraints.maxWidth >= 600,
                     destinations: [
+                      NavigationRailDestination(
+                        icon: Icon(Icons.grid_3x3),
+                        label: Text('game'),
+                      ),
                       NavigationRailDestination(
                         icon: Icon(Icons.home),
                         label: Text('Home'),
