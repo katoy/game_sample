@@ -6,10 +6,17 @@ WIP
 
 web/index.html で goolgmap のための API KEY を設定する必要があります。(for web)
 
-## scrennshot
+game は auto-gpt を使って生成しています。cpu 側は min-max 法を使っています。
+
+indicator に使っている画像は, web上のフリー画像です。
+
+## screenshot
 
 - anmimation gif
-![screnn](./screenshots/namer.gif)
+![screen](./screenshots/namer.gif)
+
+- game 画面, indicator 画面, google map 画面
+![screen](./screenshots/namer-01.gif)
 
 ## See
 
