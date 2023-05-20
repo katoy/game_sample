@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '/utils/ai.dart';
@@ -132,9 +133,15 @@ class GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        Text(
+          'Hi、${user?.email}さん！',
+        ),
+        const SizedBox(height: 20),
         Text('あなた: $_playerScore'),
         Text('　ＡＩ: $_aiScore'),
         Text('引分け: $_drawCount'),

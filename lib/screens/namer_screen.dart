@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:english_words/english_words.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_login/widgets.dart';
 
-import '../game_auth.dart';
 import '/constants/constants.dart';
 import '/screens/indicator_screen.dart';
 import '/screens/game_screen.dart';
@@ -74,6 +74,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
+  final user = FirebaseAuth.instance.currentUser;
 
   AppBar _buildAppBar(ThemeData theme) {
     final title = Center(
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.only(right: 30),
           icon: Icon(Icons.logout),
           onPressed: () {
-            GameAuth().signOut();
+            FirebaseAuth.instance.signOut();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),

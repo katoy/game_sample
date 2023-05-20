@@ -1,27 +1,53 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../constants.dart';
-import '../utils/custom_route.dart';
+import '/constants.dart';
+import '/utils/custom_route.dart';
 import '/screens/namer_screen.dart';
+import '/auth_service.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
+  static final AuthService _authService = AuthService();
 
   const LoginScreen({Key? key}) : super(key: key);
 
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
 
-  Future<String?> _loginUser(LoginData data) {
-    return Future.delayed(loginTime).then((_) {
-      return 'メールアドレスまたはパスワードが一致しません';
+  Future<String?> _registerUser(SignupData data) {
+    if (kDebugMode) {
+      print('Email: ${data.name}, Password: ${data.password}');
+    }
+    return Future.delayed(loginTime).then((_) async {
+      if (data.name == null || data.password == null) {
+        return 'メールアドレスまたはパスワードが入力されていません。';
+      }
+      var userCredential =
+          await _authService.signUp(data.name!, data.password!);
+      if (userCredential == null) {
+        return 'メールアドレスがすでに登録されているか、無効です。';
+      }
+      return null;
     });
   }
 
-  Future<String?> _signupUser(SignupData data) {
-    return Future.delayed(loginTime).then((_) {
+  Future<String?> _authUser(LoginData data) {
+    if (kDebugMode) {
+      print('Email: ${data.name}, Password: ${data.password}');
+    }
+    return Future.delayed(loginTime).then((_) async {
+      // ignore: unnecessary_null_comparison
+      if (data.name == null) {
+        return 'メールアドレスまたはパスワードが入力されていません。';
+      }
+      var userCredential = await _authService.signIn(data.name, data.password);
+      if (userCredential == null) {
+        return 'メールアドレスまたはパスワードが間違っています。';
+      }
       return null;
     });
   }
@@ -136,6 +162,24 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
 
+      messages: LoginMessages(
+          userHint: 'foo@example.com',
+          passwordHint: 'パスワード',
+          confirmPasswordHint: 'パスワード確認',
+          loginButton: 'ログイン',
+          signupButton: '登録',
+          forgotPasswordButton: 'パスワードを忘れましたか？',
+          recoverPasswordButton: 'ヘルプ',
+          goBackButton: '戻る',
+          confirmPasswordError: '一致しません',
+          recoverPasswordIntro: 'Don\'t feel bad. Happens all the time.',
+          recoverPasswordDescription:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+          recoverPasswordSuccess: 'パスワードをリセットしました',
+          flushbarTitleError: 'Oh no!',
+          flushbarTitleSuccess: 'Succes!',
+          providersTitleFirst: 'あるいは以下でログイン'),
+
       // scrollable: true,
       // hideProvidersTitle: false,
       // loginAfterSignUp: false,
@@ -248,30 +292,8 @@ class LoginScreen extends StatelessWidget {
         }
         return null;
       },
-      onLogin: (loginData) {
-        debugPrint('Login info');
-        debugPrint('Name: ${loginData.name}');
-        debugPrint('Password: ${loginData.password}');
-        return _loginUser(loginData);
-      },
-      onSignup: (signupData) {
-        debugPrint('Signup info');
-        debugPrint('Name: ${signupData.name}');
-        debugPrint('Password: ${signupData.password}');
-
-        signupData.additionalSignupData?.forEach((key, value) {
-          debugPrint('$key: $value');
-        });
-        if (signupData.termsOfService.isNotEmpty) {
-          debugPrint('Terms of service: ');
-          for (final element in signupData.termsOfService) {
-            debugPrint(
-              ' - ${element.term.id}: ${element.accepted == true ? 'accepted' : 'rejected'}',
-            );
-          }
-        }
-        return _signupUser(signupData);
-      },
+      onLogin: _authUser,
+      onSignup: _registerUser,
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(
           FadePageRoute(
@@ -316,7 +338,7 @@ class IntroWidget extends StatelessWidget {
             Expanded(child: Divider()),
             Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text("Authenticate"),
+              child: Text("認証"),
             ),
             Expanded(child: Divider()),
           ],
