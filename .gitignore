@@ -1,4 +1,5 @@
 # Miscellaneous
+lib/firebase_options.dart
 web/index.html-katoy
 *.class
 *.log
