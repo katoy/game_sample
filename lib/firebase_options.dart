@@ -44,40 +44,44 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBn_7mPV1ErwSoqGyFv7qY__ifbhjo0gOA',
-    appId: '1:610772511294:web:15949e6e0dbc8469f27f6f',
-    messagingSenderId: '610772511294',
-    projectId: 'game-sample-280a2',
-    authDomain: 'game-sample-280a2.firebaseapp.com',
-    storageBucket: 'game-sample-280a2.appspot.com',
-    measurementId: 'G-5FVBEZFHXZ',
+    apiKey: 'AIzaSyA8sqdsHZwo7WyFtvHhyVlDyCI03d2It1E',
+    appId: '1:653657708900:web:2c52b6fbcbe0d47f194271',
+    messagingSenderId: '653657708900',
+    projectId: 'counter-firebase-3246b',
+    authDomain: 'counter-firebase-3246b.firebaseapp.com',
+    databaseURL: 'https://counter-firebase-3246b-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'counter-firebase-3246b.appspot.com',
+    measurementId: 'G-T0HYP9977Y',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDqfI1GRNkNbJGe8aZoWvMVGslSNHLMaV8',
-    appId: '1:610772511294:android:9495a29e41df71d5f27f6f',
-    messagingSenderId: '610772511294',
-    projectId: 'game-sample-280a2',
-    storageBucket: 'game-sample-280a2.appspot.com',
+    apiKey: 'AIzaSyAWk44NsWnmlhtLcM06Yfq249Tk4TnbVXU',
+    appId: '1:653657708900:android:ad82bf7f2d566920194271',
+    messagingSenderId: '653657708900',
+    projectId: 'counter-firebase-3246b',
+    databaseURL: 'https://counter-firebase-3246b-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'counter-firebase-3246b.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAJnbc2BQ57DzUsWRiDkRdmtl1dxAomcXI',
-    appId: '1:610772511294:ios:f7720c354ec77288f27f6f',
-    messagingSenderId: '610772511294',
-    projectId: 'game-sample-280a2',
-    storageBucket: 'game-sample-280a2.appspot.com',
-    iosClientId: '610772511294-mso3g7tt793s2onrd93731s65o0ng8vr.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDoQrosUK-3J4nY0csieAd1g8a5owCPLDo',
+    appId: '1:653657708900:ios:6a4f67b05b271515194271',
+    messagingSenderId: '653657708900',
+    projectId: 'counter-firebase-3246b',
+    databaseURL: 'https://counter-firebase-3246b-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'counter-firebase-3246b.appspot.com',
+    iosClientId: '653657708900-05phramghl4dsgfitnbf4ked4ce2ln4e.apps.googleusercontent.com',
     iosBundleId: 'com.example.gameSample',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAJnbc2BQ57DzUsWRiDkRdmtl1dxAomcXI',
-    appId: '1:610772511294:ios:f7720c354ec77288f27f6f',
-    messagingSenderId: '610772511294',
-    projectId: 'game-sample-280a2',
-    storageBucket: 'game-sample-280a2.appspot.com',
-    iosClientId: '610772511294-mso3g7tt793s2onrd93731s65o0ng8vr.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDoQrosUK-3J4nY0csieAd1g8a5owCPLDo',
+    appId: '1:653657708900:ios:6a4f67b05b271515194271',
+    messagingSenderId: '653657708900',
+    projectId: 'counter-firebase-3246b',
+    databaseURL: 'https://counter-firebase-3246b-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'counter-firebase-3246b.appspot.com',
+    iosClientId: '653657708900-05phramghl4dsgfitnbf4ked4ce2ln4e.apps.googleusercontent.com',
     iosBundleId: 'com.example.gameSample',
   );
 }
