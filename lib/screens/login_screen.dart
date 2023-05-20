@@ -3,11 +3,9 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '/constants/constants.dart';
-import '/utils/custom_route.dart';
-// import '/screens/dashboard_screen.dart';
+import '../constants.dart';
+import '../utils/custom_route.dart';
 import '/screens/namer_screen.dart';
-import '/users.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
@@ -18,13 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   Future<String?> _loginUser(LoginData data) {
     return Future.delayed(loginTime).then((_) {
-      if (!mockUsers.containsKey(data.name)) {
-        return 'User not exists';
-      }
-      if (mockUsers[data.name] != data.password) {
-        return 'Password does not match';
-      }
-      return null;
+      return 'メールアドレスまたはパスワードが一致しません';
     });
   }
 
@@ -36,9 +28,6 @@ class LoginScreen extends StatelessWidget {
 
   Future<String?> _recoverPassword(String name) {
     return Future.delayed(loginTime).then((_) {
-      if (!mockUsers.containsKey(name)) {
-        return 'User not exists';
-      }
       return null;
     });
   }
@@ -62,17 +51,6 @@ class LoginScreen extends StatelessWidget {
       loginAfterSignUp: false,
       loginProviders: [
         LoginProvider(
-          button: Buttons.linkedIn,
-          label: 'Sign in with LinkedIn',
-          callback: () async {
-            return null;
-          },
-          providerNeedsSignUpCallback: () {
-            // put here your logic to conditionally show the additional fields
-            return Future.value(true);
-          },
-        ),
-        LoginProvider(
           icon: FontAwesomeIcons.google,
           label: 'Google',
           callback: () async {
@@ -81,7 +59,6 @@ class LoginScreen extends StatelessWidget {
         ),
         LoginProvider(
           icon: FontAwesomeIcons.githubAlt,
-          label: 'github',
           callback: () async {
             debugPrint('start github sign in');
             await Future.delayed(loginTime);
@@ -147,8 +124,7 @@ class LoginScreen extends StatelessWidget {
           },
         ),
       ],
-
-      //onRecoverPassword: _recoverPassword,
+      scrollable: true,
       theme: LoginTheme(
         primaryColor: Colors.deepPurple,
         accentColor: Colors.yellow,
@@ -261,8 +237,8 @@ class LoginScreen extends StatelessWidget {
       //   ),
       // ),
       userValidator: (value) {
-        if (!value!.contains('@') || !value.endsWith('.com')) {
-          return "Email must contain '@' and end with '.com'";
+        if (!value!.contains('@')) {
+          return "Email must contain '@'";
         }
         return null;
       },
@@ -299,7 +275,6 @@ class LoginScreen extends StatelessWidget {
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(
           FadePageRoute(
-            // builder: (context) => const DashboardScreen(),
             builder: (context) => const NamerScreen(),
           ),
         );

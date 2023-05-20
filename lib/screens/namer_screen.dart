@@ -6,10 +6,12 @@ import 'package:flutter_login/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_login/widgets.dart';
 
+import '../game_auth.dart';
 import '/constants/constants.dart';
 import '/screens/indicator_screen.dart';
 import '/screens/game_screen.dart';
 import '/screens/map_screen.dart';
+import 'login_screen.dart';
 
 class NamerScreen extends StatelessWidget {
   static const routeName = '/namer';
@@ -105,6 +107,21 @@ class _MyHomePageState extends State<MyHomePage> {
       title: title,
       backgroundColor: theme.primaryColor.withOpacity(.1),
       elevation: 0,
+      centerTitle: true,
+      actions: [
+        IconButton(
+          tooltip: 'ログアウト',
+          padding: EdgeInsets.only(right: 30),
+          icon: Icon(Icons.logout),
+          onPressed: () {
+            GameAuth().signOut();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginScreen()),
+            );
+          },
+        ),
+      ],
     );
   }
 

@@ -10,6 +10,16 @@ game は auto-gpt を使って生成しています。cpu 側は min-max 法を�
 
 indicator に使っている画像は, web上のフリー画像です。
 
+
+firebase のプロジェクト： game-sample
+Authenticator で mail/passowd 認証を有効にしておきます。
+サインアップしたユザーは、firebase の コンソールで確認してできます。
+
+```zsh
+dart pub global activate flutterfire_cli
+flutterfire configure --project=game-sample-******
+```
+
 ## screenshot
 
 - anmimation gif
@@ -31,3 +41,6 @@ indicator に使っている画像は, web上のフリー画像です。
 
 - https://qiita.com/yoshikoba/items/e4c8eae14735e7304902
   iOS/Android/WebでGoogleMapを表示する
+
+- https://firebase.google.com/docs/auth/flutter/start?hl=ja
+  Flutter で Firebase Authentication を使ってみる

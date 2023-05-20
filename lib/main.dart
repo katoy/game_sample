@@ -1,18 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // import '/screens/dashboard_screen.dart';
-import '/screens/indicator_screen.dart';
 import '/screens/namer_screen.dart';
 import '/screens/login_screen.dart';
 import '/utils/transition_route_observer.dart';
+import 'firebase_options.dart';
 
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      systemNavigationBarColor:
-          SystemUiOverlayStyle.dark.systemNavigationBarColor,
-    ),
+/// プラットフォームの確認
+final isAndroid =
+    defaultTargetPlatform == TargetPlatform.android ? true : false;
+final isIOS = defaultTargetPlatform == TargetPlatform.iOS ? true : false;
+
+/// メイン
+void main() async {
+  // バインディングを初期化
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    name: isAndroid || isIOS ? 'counterFirebase' : null,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }
@@ -65,7 +73,6 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (context) => const LoginScreen(),
         // DashboardScreen.routeName: (context) => const DashboardScreen(),
         NamerScreen.routeName: (context) => const NamerScreen(),
-        IndicatorScreen.routeName: (context) => const IndicatorScreen(),
       },
     );
   }
