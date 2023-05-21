@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [TransitionRouteObserver()],
       initialRoute: LoginScreen.routeName,
       routes: {
-        LoginScreen.routeName: (context) => const LoginScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
         // DashboardScreen.routeName: (context) => const DashboardScreen(),
         NamerScreen.routeName: (context) => const NamerScreen(),
       },

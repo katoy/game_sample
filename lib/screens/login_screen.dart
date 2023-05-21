@@ -64,6 +64,19 @@ class LoginScreen extends StatelessWidget {
     });
   }
 
+  Future<UserCredential> signInWithGoogle() async {
+    // Create a new provider
+    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+
+    // Once signed in, return the UserCredential
+    // return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+    //
+    // Or use signInWithRedirect
+    // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
+
+    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
@@ -82,12 +95,21 @@ class LoginScreen extends StatelessWidget {
           callback: () async {
             debugPrint('start google sign in');
             await Future.delayed(loginTime);
+
+            GoogleAuthProvider googleProvider = GoogleAuthProvider();
+            UserCredential uc =
+                await FirebaseAuth.instance.signInWithPopup(googleProvider);
+
             debugPrint('stop gogle sign in');
+            if (uc.user == null) {
+              return "error";
+            }
             return null;
           },
         ),
         LoginProvider(
           icon: FontAwesomeIcons.githubAlt,
+          label: 'github',
           callback: () async {
             debugPrint('start github sign in');
             await Future.delayed(loginTime);

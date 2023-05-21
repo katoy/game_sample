@@ -28,6 +28,9 @@ flutterfire configure --project=game-sample-******
 - game 画面, indicator 画面, google map 画面
 ![screen](./screenshots/namer-01.gif)
 
+- email/password, github での login
+![screen](./screenshots/pw-google.gif)
+
 ## See
 
 - https://github.com/NearHuscarl/flutter_login
@@ -44,3 +47,9 @@ flutterfire configure --project=game-sample-******
 
 - https://firebase.google.com/docs/auth/flutter/start?hl=ja
   Flutter で Firebase Authentication を使ってみる
+
+- https://firebase.google.com/docs/auth/flutter/federated-auth?hl=ja#web
+  フェデレーション ID とソーシャル ログイン
+
+- https://zenn.dev/welchi/articles/firebase-auth
+  FlutterへFirebase AuthenticationとGoogle Sign-Inで簡単にログイン機能を実装

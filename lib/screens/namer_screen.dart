@@ -114,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
           tooltip: 'ログアウト',
           padding: EdgeInsets.only(right: 30),
           icon: Icon(Icons.logout),
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),
