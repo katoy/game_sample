@@ -80,6 +80,9 @@ class LoginScreen extends StatelessWidget {
           icon: FontAwesomeIcons.google,
           label: 'Google',
           callback: () async {
+            debugPrint('start google sign in');
+            await Future.delayed(loginTime);
+            debugPrint('stop gogle sign in');
             return null;
           },
         ),
@@ -96,9 +99,9 @@ class LoginScreen extends StatelessWidget {
           icon: FontAwesomeIcons.twitter,
           label: 'twitter',
           callback: () async {
-            debugPrint('start github sign in');
+            debugPrint('start twitter sign in');
             await Future.delayed(loginTime);
-            debugPrint('stop github sign in');
+            debugPrint('stop twitter sign in');
             return null;
           },
         ),
@@ -317,9 +320,9 @@ class IntroWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Text.rich(
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -334,7 +337,7 @@ class IntroWidget extends StatelessWidget {
           textAlign: TextAlign.justify,
         ),
         Row(
-          children: const <Widget>[
+          children: <Widget>[
             Expanded(child: Divider()),
             Padding(
               padding: EdgeInsets.all(8.0),
