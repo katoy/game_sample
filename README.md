@@ -22,13 +22,13 @@ flutterfire configure --project=game-sample-******
 
 ## screenshot
 
-- anmimation gif
+### anmimation gif
 ![screen](./screenshots/namer.gif)
 
-- game 画面, indicator 画面, google map 画面
+### game 画面, indicator 画面, google map 画面
 ![screen](./screenshots/namer-01.gif)
 
-- email/password, github での login
+### email/password, github での login
 ![screen](./screenshots/pw-google.gif)
 
 ## See
