@@ -2,10 +2,12 @@
 
 import 'package:english_words/english_words.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_login/widgets.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '/constants/constants.dart';
 import '/screens/indicator_screen.dart';
@@ -115,7 +117,16 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.only(right: 30),
           icon: Icon(Icons.logout),
           onPressed: () async {
+            final User? user = FirebaseAuth.instance.currentUser;
+            String provider = '';
+            if (user != null) {
+              // ユーザーの認証プロバイダを取得します
+              provider = user.providerData[0].providerId;
+            }
             await FirebaseAuth.instance.signOut();
+            if (provider == 'google.com' && !kIsWeb) {
+              await GoogleSignIn().signOut();
+            }
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),

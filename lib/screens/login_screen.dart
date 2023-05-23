@@ -89,6 +89,7 @@ class LoginScreen extends StatelessWidget {
       onConfirmSignup: _signupConfirm,
       loginAfterSignUp: false,
       loginProviders: [
+        // google
         LoginProvider(
           icon: FontAwesomeIcons.google,
           label: 'Google',
@@ -107,26 +108,45 @@ class LoginScreen extends StatelessWidget {
             return null;
           },
         ),
+        // github
         LoginProvider(
           icon: FontAwesomeIcons.githubAlt,
           label: 'github',
           callback: () async {
             debugPrint('start github sign in');
             await Future.delayed(loginTime);
+
+            GithubAuthProvider githubProvider = GithubAuthProvider();
+            UserCredential uc =
+                await FirebaseAuth.instance.signInWithPopup(githubProvider);
+
             debugPrint('stop github sign in');
+            if (uc.user == null) {
+              return "error";
+            }
             return null;
           },
         ),
+        // twitter
         LoginProvider(
           icon: FontAwesomeIcons.twitter,
           label: 'twitter',
           callback: () async {
             debugPrint('start twitter sign in');
             await Future.delayed(loginTime);
+
+            TwitterAuthProvider twitterProvider = TwitterAuthProvider();
+            UserCredential uc =
+                await FirebaseAuth.instance.signInWithPopup(twitterProvider);
+
             debugPrint('stop twitter sign in');
+            if (uc.user == null) {
+              return "error";
+            }
             return null;
           },
         ),
+        // line
         LoginProvider(
           icon: FontAwesomeIcons.line,
           label: 'line',
